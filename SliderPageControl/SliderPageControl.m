@@ -68,12 +68,12 @@
 	_numberOfPages = page;
 	[self setNeedsDisplay];
 	
-	int width = self.frame.size.width/_numberOfPages;
+	float width = self.frame.size.width/(float)_numberOfPages;
 	int x = width*_currentPage;
 	
 	[UIView beginAnimations:nil context:nil];
 	[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-	[self.slider setFrame:CGRectMake(x,0,width,self.frame.size.height)];
+	[self.slider setFrame:CGRectMake(x,0,(int)width,self.frame.size.height)];
 	[UIView commitAnimations];
 }
 
@@ -92,9 +92,9 @@
 		[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
 	}
 	
-	int width = self.frame.size.width/self.numberOfPages;
+	float width = self.frame.size.width/(float)self.numberOfPages;
 	int x = width*currentPage;
-	[self.slider setFrame:CGRectMake(x,0,width,self.frame.size.height)];
+	[self.slider setFrame:CGRectMake(x,0,(int)width,self.frame.size.height)];
 	if (animated) [UIView commitAnimations];
 }
 
